@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class WishlistVC: BaseController {
+final class CreateVC: BaseController {
 
 }
 
-extension WishlistVC {
+extension CreateVC {
     override func setupViews() {
         super.setupViews()
         

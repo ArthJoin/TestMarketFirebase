@@ -32,7 +32,7 @@ enum Resources {
     enum Strings {
         enum TabBar {
             static var home = "Home"
-            static var wishlist = "Wishlist"
+            static var create = "Create"
             static var account = "Account"
         }
     }

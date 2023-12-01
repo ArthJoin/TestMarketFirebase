@@ -17,6 +17,11 @@ struct ResponseCode {
     let error: Error?
 }
 
+struct ProductItem {
+    let image: String
+    let name: String
+    let discription: String
+}
 
 final class NetworkManager {
     static let shared = NetworkManager()
@@ -29,31 +34,43 @@ final class NetworkManager {
         return db
     }
     
-//    func getPost(collections: String, docName: String, completion: @escaping (Document?) -> Void) {
-//        let db = configureFB()
-//        db.collection(collections).document(docName).getDocument(completion: { (document, error) in
-//            guard error == nil else { completion(nil); return }
-//            let doc = Document(field1: document?.get("field1") as! String, field2: document?.get("field2") as! String)
-//            completion(doc)
-//        })
-//    }
-//    
-//    func getImage(picName: String, completion: @escaping (UIImage) -> Void) {
-//        let storage = Storage.storage()
-//        let reference = storage.reference()
-//        let pathRef = reference.child("pictures")
-//        
-//        var image: UIImage = UIImage(named: "default_pic")!
-//        
-//        let fileRef = pathRef.child(picName + ".jpg")
-//        fileRef.getData(maxSize: 1024*1024, completion: { (data, error) in
-//            guard error == nil else { completion(image); print(error?.localizedDescription); return}
-//            image = UIImage(data: data!)!
-//            DispatchQueue.main.async {
-//                completion(image)
-//            }
-//        })
-//    }
+    func getProduct(collections: String, completion: @escaping ([ProductItem]) -> Void) {
+        let db = configureFB()
+        var result: [ProductItem] = []
+        db.collection(collections).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Ошибка при получении документов: \(error)")
+            } else {
+                guard let documents = querySnapshot?.documents else { return }
+                for doc in documents {
+                    let data = doc.data()
+                    if let imageId = data["imageId"] as? String,
+                       let name = data["productName"] as? String,
+                       let discr = data["productDescr"] as? String {
+                        result.append(ProductItem(image: imageId, name: name, discription: discr))
+                    }
+                }
+                completion(result)
+            }
+        }
+    }
+ 
+    func getImage(picName: String, completion: @escaping (UIImage) -> Void) {
+        let storage = Storage.storage()
+        let reference = storage.reference()
+        let pathRef = reference.child("products")
+        
+        var image: UIImage = UIImage(named: "default_pic")!
+        
+        let fileRef = pathRef.child(picName + ".webp")
+        fileRef.getData(maxSize: 1024*1024, completion: { (data, error) in
+            guard error == nil else { completion(image); print(error?.localizedDescription); return}
+            image = UIImage(data: data!)!
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        })
+    }
     
     func createNewUser(email: String, password: String, completion: @escaping (ResponseCode)->Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -78,9 +95,17 @@ final class NetworkManager {
     func signIn(email: String, password: String, completion: @escaping (ResponseCode)->Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error == nil {
-                completion(ResponseCode(code: 1, error: nil))
+                if let result = result {
+                    if result.user.isEmailVerified {
+                        completion(ResponseCode(code: 1, error: nil))
+                    } else {
+                        self.confirmMail { error in
+                            print("Сonfirm Mail")
+                        }
+                    }
+                }
             } else {
-                print(error?.localizedDescription)
+                completion(ResponseCode(code: 0, error: error))
             }
         }
     }

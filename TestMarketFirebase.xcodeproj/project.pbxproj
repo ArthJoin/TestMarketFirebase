@@ -15,8 +15,8 @@
 		66817FC62B192E2D0090761F /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FC52B192E2D0090761F /* Resources.swift */; };
 		66817FC82B192E3E0090761F /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FC72B192E3E0090761F /* UIColor + ext.swift */; };
 		66817FCC2B192F520090761F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FCB2B192F520090761F /* HomeVC.swift */; };
-		66817FCE2B192F5F0090761F /* WishlistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FCD2B192F5F0090761F /* WishlistVC.swift */; };
-		66817FD02B192F670090761F /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FCF2B192F670090761F /* AccountVC.swift */; };
+		66817FCE2B192F5F0090761F /* CreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FCD2B192F5F0090761F /* CreateVC.swift */; };
+		66817FD02B192F670090761F /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FCF2B192F670090761F /* SignInVC.swift */; };
 		66817FD22B192FB50090761F /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FD12B192FB50090761F /* NavBarController.swift */; };
 		66817FD52B19315D0090761F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FD42B19315D0090761F /* NetworkManager.swift */; };
 		66817FD92B1932A20090761F /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66817FD82B1932A20090761F /* LoginTextField.swift */; };
@@ -34,6 +34,8 @@
 		66DA57E62B194B9E00B358F2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA57E52B194B9E00B358F2 /* Document.swift */; };
 		66DA57EB2B1969F100B358F2 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA57EA2B1969F100B358F2 /* ForgotPasswordView.swift */; };
 		66DA57EE2B1973D000B358F2 /* CheckField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA57ED2B1973D000B358F2 /* CheckField.swift */; };
+		66DA57F42B19A50200B358F2 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA57F32B19A50200B358F2 /* AccountVC.swift */; };
+		66DA57F82B19BDFC00B358F2 /* ProductListCell .swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DA57F72B19BDFC00B358F2 /* ProductListCell .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +49,8 @@
 		66817FC52B192E2D0090761F /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		66817FC72B192E3E0090761F /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		66817FCB2B192F520090761F /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		66817FCD2B192F5F0090761F /* WishlistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistVC.swift; sourceTree = "<group>"; };
-		66817FCF2B192F670090761F /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		66817FCD2B192F5F0090761F /* CreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVC.swift; sourceTree = "<group>"; };
+		66817FCF2B192F670090761F /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		66817FD12B192FB50090761F /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		66817FD42B19315D0090761F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		66817FD82B1932A20090761F /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		66DA57E52B194B9E00B358F2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		66DA57EA2B1969F100B358F2 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		66DA57ED2B1973D000B358F2 /* CheckField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckField.swift; sourceTree = "<group>"; };
+		66DA57F32B19A50200B358F2 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		66DA57F72B19BDFC00B358F2 /* ProductListCell .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductListCell .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,10 +156,10 @@
 		66817FCA2B192F470090761F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				66DA57F22B19A4EE00B358F2 /* LoginVC */,
 				66817FCB2B192F520090761F /* HomeVC.swift */,
-				66817FCD2B192F5F0090761F /* WishlistVC.swift */,
-				66817FCF2B192F670090761F /* AccountVC.swift */,
-				66DA57D72B1935C200B358F2 /* SignUpVC.swift */,
+				66817FCD2B192F5F0090761F /* CreateVC.swift */,
+				66DA57F32B19A50200B358F2 /* AccountVC.swift */,
 				66817FDA2B1932F20090761F /* Base */,
 			);
 			path = Screens;
@@ -172,6 +176,7 @@
 		66817FD62B19326F0090761F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				66DA57F52B19BDE000B358F2 /* Cell */,
 				66DA57D62B1935B300B358F2 /* VC */,
 				66DA57D12B19352000B358F2 /* View */,
 				66817FD72B19328E0090761F /* TextFields */,
@@ -227,6 +232,23 @@
 				66DA57EA2B1969F100B358F2 /* ForgotPasswordView.swift */,
 			);
 			path = LoginViews;
+			sourceTree = "<group>";
+		};
+		66DA57F22B19A4EE00B358F2 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				66817FCF2B192F670090761F /* SignInVC.swift */,
+				66DA57D72B1935C200B358F2 /* SignUpVC.swift */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		66DA57F52B19BDE000B358F2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				66DA57F72B19BDFC00B358F2 /* ProductListCell .swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,14 +333,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66817FD02B192F670090761F /* AccountVC.swift in Sources */,
+				66817FD02B192F670090761F /* SignInVC.swift in Sources */,
 				66DA57D52B19355200B358F2 /* SignUpView.swift in Sources */,
 				66817FC32B192D680090761F /* TabBarController.swift in Sources */,
 				66817FD52B19315D0090761F /* NetworkManager.swift in Sources */,
 				66817FDE2B1933140090761F /* BaseController.swift in Sources */,
 				66817FDC2B1933040090761F /* BaseView.swift in Sources */,
 				66817FC62B192E2D0090761F /* Resources.swift in Sources */,
-				66817FCE2B192F5F0090761F /* WishlistVC.swift in Sources */,
+				66DA57F82B19BDFC00B358F2 /* ProductListCell .swift in Sources */,
+				66817FCE2B192F5F0090761F /* CreateVC.swift in Sources */,
 				66DA57D82B1935C200B358F2 /* SignUpVC.swift in Sources */,
 				66817FAD2B192CDB0090761F /* AppDelegate.swift in Sources */,
 				66DA57D32B19353000B358F2 /* SignInView.swift in Sources */,
@@ -327,6 +350,7 @@
 				66817FCC2B192F520090761F /* HomeVC.swift in Sources */,
 				66DA57E62B194B9E00B358F2 /* Document.swift in Sources */,
 				66817FC82B192E3E0090761F /* UIColor + ext.swift in Sources */,
+				66DA57F42B19A50200B358F2 /* AccountVC.swift in Sources */,
 				66817FD22B192FB50090761F /* NavBarController.swift in Sources */,
 				66DA57EB2B1969F100B358F2 /* ForgotPasswordView.swift in Sources */,
 				66817FAF2B192CDB0090761F /* SceneDelegate.swift in Sources */,

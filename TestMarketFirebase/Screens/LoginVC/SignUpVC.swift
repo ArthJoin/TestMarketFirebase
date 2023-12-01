@@ -37,9 +37,7 @@ extension SignUpVC: SignUpViewDelegate {
     }
     func signUpBtnTapped() {
         let data = signUpView.regData()
-        let safeEmail = data.email
-        let safePass = data.password
-        networkManager.createNewUser(email: safeEmail, password: safePass) { result in
+        networkManager.createNewUser(email: data.email, password: data.password) { result in
             switch result.code {
             case 0:
                 print(result.error?.localizedDescription)

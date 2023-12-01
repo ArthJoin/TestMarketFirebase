@@ -8,12 +8,28 @@
 import UIKit
 import SnapKit
 
+struct authData {
+    let email: String
+    let password: String
+}
+
 protocol LoginViewDelegate: AnyObject {
     func didSignUpBtnTapped()
+    func signInBtnTapped()
 }
 
 final class SignInView: BaseView {
     weak var delegate: LoginViewDelegate?
+    //MARK: - Public
+    func authData() -> authData {
+        guard let safeMail = self.emailTextField.textField.text,
+              let safePass = self.passTextField.textField.text else {
+            return authData()
+        }
+        let data = TestMarketFirebase.authData( email: safeMail,
+                                    password: safePass)
+        return data
+    }
     
     //MARK: - Private Properties
     private let logo: UIImageView = {
@@ -40,7 +56,7 @@ final class SignInView: BaseView {
         return label
     }()
     
-    private let loginBtn: UIButton = {
+    private let signInBtn: UIButton = {
         let btn = UIButton()
         let title = NSAttributedString(string: "Войти", attributes: [
             NSAttributedString.Key.font: Resources.Fonts.systemWeight(with: 14, weight: .medium),
@@ -82,7 +98,7 @@ extension SignInView {
         addSubview(loginHeader)
         addSubview(emailTextField)
         addSubview(passTextField)
-        addSubview(loginBtn)
+        addSubview(signInBtn)
         addSubview(forgetPassBtn)
         addSubview(signUpBtn)
     }
@@ -104,13 +120,13 @@ extension SignInView {
             make.top.equalTo(emailTextField.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(40)
         }
-        loginBtn.snp.makeConstraints { make in
+        signInBtn.snp.makeConstraints { make in
             make.top.equalTo(passTextField.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(40)
             make.height.equalTo(40)
         }
         forgetPassBtn.snp.makeConstraints { make in
-            make.top.equalTo(loginBtn.snp.bottom).offset(10)
+            make.top.equalTo(signInBtn.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         signUpBtn.snp.makeConstraints { make in
@@ -125,12 +141,16 @@ extension SignInView {
         passTextField.configure("Пароль", .bottom, "password", true)
         
         signUpBtn.addTarget(self, action: #selector(signUpBtnHandler), for: .touchUpInside)
+        signInBtn.addTarget(self, action: #selector(signInBtnHandler), for: .touchUpInside)
     }
 }
 
 extension SignInView {
     @objc func signUpBtnHandler() {
         delegate?.didSignUpBtnTapped()
+    }
+    @objc func signInBtnHandler() {
+        delegate?.signInBtnTapped()
     }
 }
 

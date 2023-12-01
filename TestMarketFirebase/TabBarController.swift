@@ -30,21 +30,28 @@ final class TabBarController: UITabBarController {
         tabBar.backgroundColor = .black
                 
         let homeVC = HomeVC()
-        let wishlistVC = WishlistVC()
-        let accountVC = AccountVC()
+        let createVC = CreateVC()
+        let isLogin = UserDefaults.standard.object(forKey: "isLogin") as? Bool ?? false
+//        let accountVC: UIViewController
+//        if isLogin {
+//            accountVC = AccountVC()
+//        } else {
+//            accountVC = SignInVC()
+//        }
+        let accountVC = SignInVC()
         
         let homeNavigation = NavBarController(rootViewController: homeVC)
-        let wishlistNavigation = NavBarController(rootViewController: wishlistVC)
+        let createNavigation = NavBarController(rootViewController: createVC)
         let accountNavigation = NavBarController(rootViewController: accountVC)
         
         homeNavigation.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.home, image: UIImage(systemName: "homekit"), tag: Tabs.Home.rawValue)
-        wishlistNavigation.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.wishlist, image: UIImage(systemName: "heart"), tag: Tabs.Wishlist.rawValue)
+        createNavigation.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.create, image: UIImage(systemName: "plus.viewfinder"), tag: Tabs.Wishlist.rawValue)
         accountNavigation.tabBarItem = UITabBarItem(title: Resources.Strings.TabBar.account, image: UIImage(systemName: "person"), tag: Tabs.Account.rawValue)
         
         
         setViewControllers([
             homeNavigation,
-            wishlistNavigation,
+            createNavigation,
             accountNavigation
         ], animated: false)
     }
