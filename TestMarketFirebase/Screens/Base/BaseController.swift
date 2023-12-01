@@ -27,7 +27,7 @@ class BaseController: UIViewController {
     func setupViews() {}
     func constraintViews() {}
     func configureAppearance() {
-        view.backgroundColor = .white
+        view.backgroundColor = .black
     }
     //MARK: - ViewWillAppear
     func fetchData() {}

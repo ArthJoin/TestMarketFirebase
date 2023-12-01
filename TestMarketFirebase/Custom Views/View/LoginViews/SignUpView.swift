@@ -8,12 +8,32 @@
 import UIKit
 import SnapKit
 
+struct regData {
+    let name: String
+    let email: String
+    let password: String
+}
+
 protocol SignUpViewDelegate: AnyObject {
     func didLoginBtnTapped()
+    func signUpBtnTapped()
 }
 
 final class SignUpView: BaseView {
     weak var delegate: SignUpViewDelegate?
+    
+    //MARK: - Public
+    func regData() -> regData {
+        guard let safeName = self.nameTextField.textField.text,
+              let safeMail = self.emailTextField.textField.text,
+              let safePass = self.passTextField.textField.text else {
+            return regData()
+        }
+        let data = TestMarketFirebase.regData(name: safeName,
+                                    email: safeMail,
+                                    password: safePass)
+        return data
+    }
     
     //MARK: - Private Properties
     private let logo: UIImageView = {
@@ -88,7 +108,7 @@ extension SignUpView {
             make.leading.trailing.equalToSuperview().inset(40)
         }
         passTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).inset(1)
+            make.top.equalTo(emailTextField.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(40)
         }
         SignUpBtn.snp.makeConstraints { make in
@@ -104,17 +124,21 @@ extension SignUpView {
     override func configureAppearance() {
         super.configureAppearance()
         self.backgroundColor = .black
-        nameTextField.configure("Имя", .top)
-        emailTextField.configure("Email", .without)
-        passTextField.configure("Пароль", .bottom)
+        nameTextField.configure("Имя", .top, "name")
+        emailTextField.configure("Email", .without, "email")
+        passTextField.configure("Пароль", .bottom, "password", true)
         
         loginBtn.addTarget(self, action: #selector(loginBtnHandler), for: .touchUpInside)
+        SignUpBtn.addTarget(self, action: #selector(signUpBtnHandler), for: .touchUpInside)
     }
 }
 
 extension SignUpView {
     @objc func loginBtnHandler() {
         delegate?.didLoginBtnTapped()
+    }
+    @objc func signUpBtnHandler() {
+        delegate?.signUpBtnTapped()
     }
 }
 

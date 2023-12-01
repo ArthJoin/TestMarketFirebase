@@ -5,4 +5,24 @@
 //  Created by Артур Наврузов on 01.12.2023.
 //
 
-import Foundation
+import UIKit
+import SnapKit
+
+final class HomeVC: BaseController {
+
+}
+
+extension HomeVC {
+    override func setupViews() {
+        super.setupViews()
+        
+    }
+    override func constraintViews() {
+        super.constraintViews()
+        
+    }
+    override func configureAppearance() {
+        super.configureAppearance()
+        
+    }
+}

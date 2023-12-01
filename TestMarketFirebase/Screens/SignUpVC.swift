@@ -9,6 +9,7 @@ import UIKit
 
 final class SignUpVC: BaseController {
     private let signUpView = SignUpView()
+    private let networkManager = NetworkManager()
 }
 
 extension SignUpVC {
@@ -33,5 +34,27 @@ extension SignUpVC {
 extension SignUpVC: SignUpViewDelegate {
     func didLoginBtnTapped() {
         self.dismiss(animated: true)
+    }
+    func signUpBtnTapped() {
+        let data = signUpView.regData()
+        let safeEmail = data.email
+        let safePass = data.password
+        networkManager.createNewUser(email: safeEmail, password: safePass) { result in
+            switch result.code {
+            case 0:
+                print(result.error?.localizedDescription)
+            case 1:
+                self.networkManager.confirmMail { error in
+                    if error == nil {
+                        print("Registration done!")
+                        self.dismiss(animated: true)
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+                }
+            default:
+                print("Unknown error")
+            }
+        }
     }
 }

@@ -101,7 +101,7 @@ extension SignInView {
             make.leading.trailing.equalToSuperview().inset(40)
         }
         passTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).inset(1)
+            make.top.equalTo(emailTextField.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(40)
         }
         loginBtn.snp.makeConstraints { make in
@@ -121,8 +121,8 @@ extension SignInView {
     override func configureAppearance() {
         super.configureAppearance()
         self.backgroundColor = .black
-        emailTextField.configure("Email", .top)
-        passTextField.configure("Пароль", .bottom)
+        emailTextField.configure("Email", .top, "email")
+        passTextField.configure("Пароль", .bottom, "password", true)
         
         signUpBtn.addTarget(self, action: #selector(signUpBtnHandler), for: .touchUpInside)
     }
